@@ -26,6 +26,12 @@ const StringCalcUI: React.FC = () => {
         }
     };
 
+    const handleKeyPress = (event: React.KeyboardEvent<HTMLInputElement>) => {
+        if (event.key === 'Enter') {
+            handleCalculate();
+        }
+    };
+
     return (
         <div className={styles.mainContainer}>
             <div className={styles.container}>
@@ -36,6 +42,7 @@ const StringCalcUI: React.FC = () => {
                     onChange={(e) => (setInput(e.target.value), setError(""), setResult(0))}
                     placeholder="Enter numbers string (e.g., 1,2,3 or //;1;2)"
                     className={styles.input}
+                    onKeyDown={handleKeyPress}
                 />
                 <button onClick={handleCalculate} className={styles.button}>
                     Calculate
